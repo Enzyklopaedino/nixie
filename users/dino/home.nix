@@ -15,6 +15,7 @@
 
     #entertainment
     spotify
+    brave
 
     # utils
     ripgrep # recursively searches directories for a regex pattern

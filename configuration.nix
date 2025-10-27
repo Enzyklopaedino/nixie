@@ -23,7 +23,6 @@
 };
 
 nix.settings.experimental-features = ["nix-command" "flakes"];
-
 hardware.bluetooth.enable = true;
 
   networking.hostName = "nixhost"; # Define your hostname.
