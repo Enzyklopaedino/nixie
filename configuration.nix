@@ -5,8 +5,9 @@
 
 { imports =
     [ # Include the results of the hardware scan.
-      ./lianli/hardware-configuration.nix ];
-
+      ./lianli/hardware-configuration.nix
+      # ./modules/browsers/firefox.nix
+      ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true; boot.loader.efi.canTouchEfiVariables = true;
   # add ethernet driver
@@ -75,7 +76,7 @@ hardware.bluetooth.enable = true;
   };
 
   # Install firefox.
-  programs.firefox.enable = true;
+  # programs.firefox.enable = true;
 
   # Allow unfree packages
   # nixpkgs.config.allowUnfree = true;
