@@ -6,6 +6,7 @@
 
   imports = [
 	./../../modules/browsers
+	./../../modules/entertainment/vesktop.nix
   ];
   
   home.packages = with pkgs; [

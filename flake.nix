@@ -4,8 +4,8 @@ description = "My smol flake";
 
 inputs = { 
 # external dependencies
-  # nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-  nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+  nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+  # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
  
  home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -20,7 +20,10 @@ inputs = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-};
+
+    catppuccin-where-is-my-sddm-theme.url = "github:catppuccin/where-is-my-sddm-theme";
+
+};:
 
 
   outputs = { self, nixpkgs, home-manager, nur, ... }@inputs:
@@ -33,6 +36,16 @@ inputs = {
           nur.overlay
         ];
       };
+	# pkgs-unstable = import nixpkgs-unstable {
+	#            inherit system;
+	#
+	#            config = {
+	#              allowUnfree = true;
+	#            };
+	#          };
+	#          specialArgs = {
+	#            inherit inputs pkgs-unstable;
+	#          };
       in {
   nixosConfigurations.nixhost = nixpkgs.lib.nixosSystem {
   inherit system;
