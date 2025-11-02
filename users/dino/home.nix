@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, ghostty, ... }:
 
 {
   home.username = "dino";
@@ -7,7 +7,8 @@
   imports = [
 	./../../modules/browsers
 	./../../modules/entertainment/vesktop.nix
-  ];
+	./../../modules/terminal/ghostty.nix
+  ];  
   
   home.packages = with pkgs; [
     # archives

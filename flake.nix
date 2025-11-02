@@ -7,6 +7,8 @@ inputs = {
   nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
   # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
  
+ ghostty.url = "github:ghostty-org/ghostty";
+
  home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       # The `follows` keyword in inputs is used for inheritance.
@@ -22,11 +24,10 @@ inputs = {
     };
 
     catppuccin-where-is-my-sddm-theme.url = "github:catppuccin/where-is-my-sddm-theme";
+};
 
-};:
 
-
-  outputs = { self, nixpkgs, home-manager, nur, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, ghostty, ... }@inputs:
   let 
   	system = "x86_64-linux";
       	pkgs = import nixpkgs {
@@ -49,21 +50,24 @@ inputs = {
       in {
   nixosConfigurations.nixhost = nixpkgs.lib.nixosSystem {
   inherit system;
-  specialArgs = { inherit inputs pkgs; }; # So modules can access pkgs if needed
+  specialArgs = { inherit inputs pkgs; }; 
 
       modules = [
         ({ config, pkgs, ... }: {
-            # nixpkgs.config.allowUnfree = true;
-	    # Your usual system config
             hardware.enableAllFirmware = true;
           })
         ./configuration.nix
+
+
         home-manager.nixosModules.home-manager
                   {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
-            home-manager.users.dino = import ./users/dino/home.nix;
+	    home-manager.extraSpecialArgs = { inherit ghostty; };
+	    home-manager.users.dino = nixpkgs.lib.mkDefault (
+	    import ./users/dino/home.nix
+	    );
           }
       ];
   };
