@@ -1,4 +1,4 @@
-{ pkgs, ghostty, ... }:
+{ pkgs, inputs, ghostty, ... }:
 
 {
   home.username = "dino";
@@ -8,6 +8,8 @@
 	./../../modules/browsers
 	./../../modules/entertainment/vesktop.nix
 	./../../modules/terminal
+
+    inputs.catppuccin.homeModules.catppuccin
   ];  
   
   home.packages = with pkgs; [
@@ -24,7 +26,7 @@
     jq # A lightweight and flexible command-line JSON processor
     eza # A modern replacement for ‘ls’
     zoxide
-    neovim
+    # neovim
 
     btop  # replacement of htop/nmon
     iotop # io monitoring
@@ -45,6 +47,10 @@
     userEmail = "dino2mail2@gmail.com";
   };
 
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+  };
  
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage

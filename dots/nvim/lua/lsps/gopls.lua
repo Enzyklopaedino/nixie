@@ -1,0 +1,16 @@
+return {
+    config = {
+        settings = {
+            gopls = {
+                completeUnimported = true,
+                usePlaceholders = true,
+                analyses = {
+                    unusedparams = true,
+                },
+            },
+            env = {
+                GOEXPERIMENT = "synctest",
+            },
+        },
+    },
+}

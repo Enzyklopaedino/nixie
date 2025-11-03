@@ -2,9 +2,10 @@
 
 {
   imports = [
-    # ./editor.nix
+    ./editor.nix
     ./shell.nix
     ./ghostty.nix
+    # ./fonts.nix
     # inputs.catppuccin.homeModules.catppuccin
   ];
    

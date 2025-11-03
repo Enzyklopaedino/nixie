@@ -23,11 +23,15 @@ inputs = {
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    catppuccin.url = "github:catppuccin/nix/release-25.05";
     catppuccin-where-is-my-sddm-theme.url = "github:catppuccin/where-is-my-sddm-theme";
 };
 
 
-  outputs = { self, nixpkgs, home-manager, nur, ghostty, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, ghostty, neovim-nightly-overlay, catppuccin, ... }@inputs:
   let 
   	system = "x86_64-linux";
       	pkgs = import nixpkgs {
@@ -64,7 +68,7 @@ inputs = {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
-	    home-manager.extraSpecialArgs = { inherit ghostty; };
+	    home-manager.extraSpecialArgs = { inherit ghostty inputs pkgs neovim-nightly-overlay; };
 	    home-manager.users.dino = nixpkgs.lib.mkDefault (
 	    import ./users/dino/home.nix
 	    );

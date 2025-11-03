@@ -7,6 +7,7 @@
     [ # Include the results of the hardware scan.
       ./lianli/hardware-configuration.nix
       # ./modules/desktop/sddm.nix
+      ./modules/terminal/fonts.nix
       ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true; boot.loader.efi.canTouchEfiVariables = true;
