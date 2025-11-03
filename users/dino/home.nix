@@ -7,7 +7,7 @@
   imports = [
 	./../../modules/browsers
 	./../../modules/entertainment/vesktop.nix
-	./../../modules/terminal/ghostty.nix
+	./../../modules/terminal
   ];  
   
   home.packages = with pkgs; [
