@@ -5,14 +5,8 @@
     ./editor.nix
     ./shell.nix
     ./ghostty.nix
-    # ./fonts.nix
-    # inputs.catppuccin.homeModules.catppuccin
+    ./development.nix
   ];
-   
-  # catppuccin = {
-  #   enable = true;
-  #   flavor = "mocha";
-  # };
   
   # home.file.".ssh/id_ed25519.pub" = {
   #   enable = true;

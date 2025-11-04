@@ -5,7 +5,7 @@ description = "My smol flake";
 inputs = { 
 # external dependencies
   nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-  # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+  nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
  
  ghostty.url = "github:ghostty-org/ghostty";
 
@@ -31,7 +31,7 @@ inputs = {
 };
 
 
-  outputs = { self, nixpkgs, home-manager, nur, ghostty, neovim-nightly-overlay, catppuccin, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nur, ghostty, neovim-nightly-overlay, catppuccin, ... }@inputs:
   let 
   	system = "x86_64-linux";
       	pkgs = import nixpkgs {
@@ -41,16 +41,16 @@ inputs = {
           nur.overlay
         ];
       };
-	# pkgs-unstable = import nixpkgs-unstable {
-	#            inherit system;
-	#
-	#            config = {
-	#              allowUnfree = true;
-	#            };
-	#          };
-	#          specialArgs = {
-	#            inherit inputs pkgs-unstable;
-	#          };
+	pkgs-unstable = import nixpkgs-unstable {
+	           inherit system;
+
+	           config = {
+	             allowUnfree = true;
+	           };
+	         };
+	         specialArgs = {
+	           inherit inputs pkgs-unstable;
+	         };
       in {
   nixosConfigurations.nixhost = nixpkgs.lib.nixosSystem {
   inherit system;
@@ -68,7 +68,7 @@ inputs = {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
-	    home-manager.extraSpecialArgs = { inherit ghostty inputs pkgs neovim-nightly-overlay; };
+	    home-manager.extraSpecialArgs = { inherit ghostty inputs pkgs neovim-nightly-overlay pkgs-unstable; };
 	    home-manager.users.dino = nixpkgs.lib.mkDefault (
 	    import ./users/dino/home.nix
 	    );

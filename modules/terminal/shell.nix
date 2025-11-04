@@ -48,55 +48,55 @@ in
     shellAliases = shellAliases;
   };
 
-  programs.git =
-    let
-      username = "dino";
-    in
-    {
-      enable = true;
-
-      userEmail = "dino2mail2@gmail.com";
-      userName = "Enzyklopaedino";
-
-      delta.enable = true;
-
-      extraConfig = {
-        color.ui = true;
-
-        core.editor = "${pkgs.neovim}/bin/nvim";
-
-        github.user = "Enzyklopaedino";
-
-        push.autoSetupRemote = true;
-        pull.rebase = true;
-
-        safe.directory = "/nixos";
-
-        url = {
-          "ssh://git@github.com/" = {
-            insteadOf = "https://github.com/";
-          };
-        };
-
-        merge.tool = "nvimdiff";
-        mergetool = {
-          nvimdiff.cmd = "nvim -d \$LOCAL \$REMOTE \$BASE \$MERGED";
-          keepBackup = false;
-        };
-
-        # credential = if (lib.hasAttr "credential" meta.git) then meta.git.credential else {};
-
-        # commit signing
-        commit.gpgsign = true;
-        gpg.format = "ssh";
-        user.signingkey = "~/.ssh/id_ed25519.pub";
-      };
-
-      aliases = {
-        graph = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all";
-      };
-    };
-
+  # programs.git =
+  #   let
+  #     username = "dino";
+  #   in
+  #   {
+  #     enable = true;
+  #
+  #     userEmail = "dino2mail2@gmail.com";
+  #     userName = "Enzyklopaedino";
+  #
+  #     delta.enable = true;
+  #
+  #     extraConfig = {
+  #       color.ui = true;
+  #
+  #       core.editor = "${pkgs.neovim}/bin/nvim";
+  #
+  #       github.user = "Enzyklopaedino";
+  #
+  #       push.autoSetupRemote = true;
+  #       pull.rebase = true;
+  #
+  #       safe.directory = "/nixos";
+  #
+  #       url = {
+  #         "ssh://git@github.com/" = {
+  #           insteadOf = "https://github.com/";
+  #         };
+  #       };
+  #
+  #       merge.tool = "nvimdiff";
+  #       mergetool = {
+  #         nvimdiff.cmd = "nvim -d \$LOCAL \$REMOTE \$BASE \$MERGED";
+  #         keepBackup = false;
+  #       };
+  #
+  #       # credential = if (lib.hasAttr "credential" meta.git) then meta.git.credential else {};
+  #
+  #       # commit signing
+  #       commit.gpgsign = true;
+  #       gpg.format = "ssh";
+  #       user.signingkey = "~/.ssh/id_ed25519.pub";
+  #     };
+  #
+  #     aliases = {
+  #       graph = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all";
+  #     };
+  #   };
+  #
   programs.oh-my-posh = {
     enable = true;
 
