@@ -24,7 +24,7 @@
 };
 
 nix.settings.experimental-features = ["nix-command" "flakes"];
-hardware.bluetooth.enable = true;
+  hardware.bluetooth.enable = true;
 
   networking.hostName = "nixhost"; # Define your hostname.
   # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
@@ -55,6 +55,8 @@ hardware.bluetooth.enable = true;
   services.xserver.xkb = { layout = "us"; variant = "";
   };
 
+  virtualisation.docker.enable = true;
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -70,7 +72,7 @@ hardware.bluetooth.enable = true;
   # Enable touchpad support (enabled default in most desktopManager). services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.dino = { isNormalUser = true; description = "dino"; extraGroups = [ "networkmanager" "wheel" ]; packages = with pkgs; [
+  users.users.dino = { isNormalUser = true; description = "dino"; extraGroups = [ "networkmanager" "wheel" "docker"]; packages = with pkgs; [
     #  thunderbird
     ];
   };
