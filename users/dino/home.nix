@@ -17,9 +17,17 @@
     zip
     unzip
 
+    biome
+
     #entertainment
     spotify
     brave
+
+    # screenshot
+    pkgs.grim
+    pkgs.slurp
+    pkgs.hyprshot
+
 
     # utils
     ripgrep # recursively searches directories for a regex pattern

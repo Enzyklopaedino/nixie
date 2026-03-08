@@ -25,7 +25,6 @@
 
 nix.settings.experimental-features = ["nix-command" "flakes"];
   hardware.bluetooth.enable = true;
-
   networking.hostName = "nixhost"; # Define your hostname.
   # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
 
@@ -90,6 +89,8 @@ nix.settings.experimental-features = ["nix-command" "flakes"];
   git
   vim
   wget
+  obsidian
+  libreoffice-qt
   ];
 
   environment.variables.EDITOR = "vim";
@@ -109,4 +110,6 @@ nix.settings.experimental-features = ["nix-command" "flakes"];
   # taken. It‘s perfectly fine and recommended to leave this value at the release version of the first install of this system. Before changing this value read 
   # the documentation for this option (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
+
+# services.cloudflare-warp.enable = true;
 }
